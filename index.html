@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>My Builder — Website editor</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="#"><span class="mark">M</span> My Builder</a><span id="siteName">Untitled website</span><div class="actions"><button id="save">Save</button><button id="connect" class="outline">Connect domain</button><button id="preview" class="primary">Preview</button></div></header>
+  <main class="layout">
+    <aside class="sidebar"><div class="tabs"><button class="tab active" data-panel="elements">Elements</button><button class="tab" data-panel="templates">Templates</button></div>
+      <section id="elements" class="panel active"><p class="hint">Drag an element onto your page</p><div class="elements">
+        <button draggable="true" data-type="heading">H1 <small>Heading</small></button><button draggable="true" data-type="text">¶ <small>Text</small></button><button draggable="true" data-type="button">▣ <small>Button</small></button><button draggable="true" data-type="image">▧ <small>Image</small></button><button draggable="true" data-type="section">▬ <small>Section</small></button><button draggable="true" data-type="columns">▥ <small>Columns</small></button>
+      </div></section>
+      <section id="templates" class="panel"><p class="hint">Choose a starting point</p><div class="templates"><button data-template="portfolio"><span class="thumb portfolio"></span>Portfolio</button><button data-template="startup"><span class="thumb startup"></span>Startup</button><button data-template="restaurant"><span class="thumb restaurant"></span>Restaurant</button></div></section>
+    </aside>
+    <section class="editor"><div class="toolbar"><span>Page&nbsp; / &nbsp;Home</span><div><button class="device active" data-size="desktop">Desktop</button><button class="device" data-size="tablet">Tablet</button><button class="device" data-size="mobile">Mobile</button></div></div><div class="stage"><div id="canvas" class="canvas"><div class="empty">Drag elements here or choose a template</div></div></div></section>
+    <aside class="inspector"><h3>Properties</h3><div id="props" class="props">Select an element to edit its content and style.</div></aside>
+  </main>
+  <dialog id="domainDialog"><form method="dialog" class="dialog-head"><div><h2>Connect a custom domain</h2><p>Use a domain you own for your published website.</p></div><button class="close" aria-label="Close">×</button></form><div class="domain-body"><label>Custom domain<input id="domainInput" placeholder="www.example.com" autocomplete="url"></label><label>DNS target from your hosting provider<input id="targetInput" placeholder="e.g. cname.hosting-provider.com"></label><p class="notice"><strong>Hosting required:</strong> A custom domain can only go live after this site is published on a hosting provider. Enter the DNS target supplied by that provider; My Builder does not currently publish sites, verify DNS, or issue SSL certificates.</p><h3>Next steps</h3><ol><li>Publish or export your site to a hosting provider that supports custom domains.</li><li>At your domain registrar, add the DNS record(s) the host gives you. For a <code>www</code> subdomain this is commonly a CNAME, but follow your host's exact instructions.</li><li>Save your domain here, then use your host's dashboard to verify DNS and enable HTTPS.</li></ol><button id="saveDomain" class="primary" type="button">Save domain setup</button><p id="domainStatus" class="status"></p></div></dialog>
+  <dialog id="previewDialog"><form method="dialog" class="dialog-head"><h2>Website preview</h2><button class="close" aria-label="Close">×</button></form><iframe id="previewFrame" title="Website preview"></iframe></dialog>
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
